@@ -9,7 +9,10 @@ import java.io.*;
  *
  * @author Martin Eesmaa
  * Start date: 28th May 2025
+ * File: main.java
  * License: MIT
+ * Source code: https://github.com/MartinEesmaa/Taxcalculate
+ * 
  */
 public class main extends javax.swing.JFrame {
 
@@ -122,8 +125,6 @@ public class main extends javax.swing.JFrame {
 
                 if (!validIncome) {
                     taxPayable = "ERROR";
-                } else if (income < 0) {
-                    taxPayable = "$0.00";
                 } else if (income <= 18200) {
                     taxPayable = "$0.00";
                 } else if (income <= 45000) {
@@ -148,7 +149,7 @@ public class main extends javax.swing.JFrame {
             writer.flush();
             jTextArea1.setText(displayText.toString());
         } catch (IOException ex) {
-            jTextArea1.setText("Error: " + ex.getMessage());
+            jTextArea1.setText("Error I/O: " + ex.getMessage());
         }
     }//GEN-LAST:event_btnClickActionPerformed
 
