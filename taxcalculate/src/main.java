@@ -130,16 +130,16 @@ public class main extends javax.swing.JFrame {
                     taxPayable = "$0.00";
                 } else if (income <= 45000) {
                     double tax = (income - 18200) * 0.16;
-                    taxPayable = String.format("$%.2f", tax);
+                    taxPayable = String.format(java.util.Locale.US, "$%.2f", tax);
                 } else if (income <= 135000) {
                     double tax = 4288 + (income - 45000) * 0.30;
-                    taxPayable = String.format("$%.2f", tax);
+                    taxPayable = String.format(java.util.Locale.US, "$%.2f", tax);
                 } else if (income <= 190000) {
                     double tax = 31288 + (income - 135000) * 0.37;
-                    taxPayable = String.format("$%.2f", tax);
+                    taxPayable = String.format(java.util.Locale.US, "$%.2f", tax);
                 } else {
                     double tax = 51638 + (income - 190000) * 0.45;
-                    taxPayable = String.format("$%.2f", tax);
+                    taxPayable = String.format(java.util.Locale.US, "$%.2f", tax);
                 }
 
                 String outputLine = name + "," + phone + "," + incomeStr + "," + taxPayable;
