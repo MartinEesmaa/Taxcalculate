@@ -44,6 +44,7 @@ public class main extends javax.swing.JFrame {
 
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
         jTextArea1.setRows(5);
         txtArea.setViewportView(jTextArea1);
 
