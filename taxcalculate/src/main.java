@@ -106,13 +106,18 @@ public class main extends javax.swing.JFrame {
                 String incomeStr = parts[2].trim();
                 String taxPayable;
 
-                double income = 0;
+                int income = 0;
                 boolean validIncome = true;
 
-                try {
-                    income = Double.parseDouble(incomeStr);
-                } catch (NumberFormatException e) {
+                // Only accept integer values (no decimals allowed)
+                if (!incomeStr.matches("-?\\d+")) {
                     validIncome = false;
+                } else {
+                    try {
+                        income = Integer.parseInt(incomeStr);
+                    } catch (NumberFormatException e) {
+                        validIncome = false;
+                    }
                 }
 
                 if (!validIncome) {
