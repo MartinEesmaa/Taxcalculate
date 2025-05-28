@@ -38,6 +38,10 @@ public class main extends javax.swing.JFrame {
         btnClick = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tax payable calculator");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setForeground(new java.awt.Color(242, 242, 242));
+        setResizable(false);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         jLabel1.setText("Tax payable calculator");
@@ -82,8 +86,10 @@ public class main extends javax.swing.JFrame {
                 .addComponent(txtArea, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnClick)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleDescription("Calculates incomes to tax values");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
