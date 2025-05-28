@@ -85,7 +85,66 @@ public class main extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnClickActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClickActionPerformed
-        // TODO add your handling code here:
+        // Path to input and output files
+        String inputFile = "ClientIncomes.txt";
+        String outputFile = "ClientTaxPayable.txt";
+        StringBuilder displayText = new StringBuilder();
+
+        try (
+            BufferedReader reader = new BufferedReader(new FileReader(inputFile));
+            BufferedWriter writer = new BufferedWriter(new FileWriter(outputFile))
+        ) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] parts = line.split(",");
+                if (parts.length != 3) {
+                    // Malformed line, skip or handle as needed
+                    continue;
+                }
+                String name = parts[0].trim();
+                String phone = parts[1].trim();
+                String incomeStr = parts[2].trim();
+                String taxPayable;
+
+                double income = 0;
+                boolean validIncome = true;
+
+                try {
+                    income = Double.parseDouble(incomeStr);
+                } catch (NumberFormatException e) {
+                    validIncome = false;
+                }
+
+                if (!validIncome) {
+                    taxPayable = "ERROR";
+                } else if (income < 0) {
+                    taxPayable = "$0.00";
+                } else if (income <= 18200) {
+                    taxPayable = "$0.00";
+                } else if (income <= 45000) {
+                    double tax = (income - 18200) * 0.16;
+                    taxPayable = String.format("$%.2f", tax);
+                } else if (income <= 135000) {
+                    double tax = 4288 + (income - 45000) * 0.30;
+                    taxPayable = String.format("$%.2f", tax);
+                } else if (income <= 190000) {
+                    double tax = 31288 + (income - 135000) * 0.37;
+                    taxPayable = String.format("$%.2f", tax);
+                } else {
+                    double tax = 51638 + (income - 190000) * 0.45;
+                    taxPayable = String.format("$%.2f", tax);
+                }
+
+                String outputLine = name + "," + phone + "," + incomeStr + "," + taxPayable;
+                writer.write(outputLine);
+                writer.newLine();
+                displayText.append(outputLine).append("\n");
+            }
+            writer.flush();
+            jTextArea1.setText(displayText.toString());
+        } catch (IOException ex) {
+            jTextArea1.setText("Error: " + ex.getMessage());
+        }
     }//GEN-LAST:event_btnClickActionPerformed
 
     /**
