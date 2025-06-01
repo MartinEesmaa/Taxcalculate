@@ -128,10 +128,13 @@ public class main extends javax.swing.JFrame {
                     } catch (NumberFormatException e) {
                         validIncome = false;
                     }
-                }
-
+                }    
+                
+                // Any without numbers or/and non-integer will result ERROR display.
                 if (!validIncome) {
                     taxPayable = "ERROR";
+                // For less than 18200 dollars will result zero dollars for taxes
+                // Otherwise more than 18200 dollars will add tax after income and percent.
                 } else if (income <= 18200) {
                     taxPayable = "$0.00";
                 } else if (income <= 45000) {
@@ -147,7 +150,8 @@ public class main extends javax.swing.JFrame {
                     double tax = 51638 + (income - 190000) * 0.45;
                     taxPayable = String.format(java.util.Locale.US, "$%.2f", tax);
                 }
-
+                
+                // After calculation, it will reconstruct and adds final value of taxPayable.
                 String outputLine = name + "," + phone + "," + incomeStr + "," + taxPayable;
                 writer.write(outputLine);
                 writer.newLine();
