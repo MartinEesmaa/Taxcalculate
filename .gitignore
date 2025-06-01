@@ -24,3 +24,4 @@ hs_err_pid*
 replay_pid*
 /taxcalculate/nbproject/private/
 /taxcalculate/build/
+/taxcalculate/dist/
