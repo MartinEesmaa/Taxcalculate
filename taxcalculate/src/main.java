@@ -107,8 +107,33 @@ public class main extends javax.swing.JFrame {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.split(",");
-                if (parts.length != 3) {
-                    // Malformed line, skip or handle as needed
+                if (parts.length < 3) {
+                    // Not enough fields, output ERROR with what is available
+                    String name = parts.length > 0 ? parts[0].trim() : "";
+                    String phone = parts.length > 1 ? parts[1].trim() : "";
+                    String incomeStr = "";
+                    String taxPayable = "ERROR";
+                    String outputLine = name + "," + phone + "," + incomeStr + "," + taxPayable;
+                    writer.write(outputLine);
+                    writer.newLine();
+                    displayText.append(outputLine).append("\n");
+                    continue;
+                } else if (parts.length > 3) {
+                    // Too many fields, join the rest as incomeStr and output ERROR
+                    String name = parts[0].trim();
+                    String phone = parts[1].trim();
+                    // Join all remaining parts as the income string
+                    StringBuilder incomeBuilder = new StringBuilder();
+                    for (int i = 2; i < parts.length; i++) {
+                        if (i > 2) incomeBuilder.append(",");
+                        incomeBuilder.append(parts[i].trim());
+                    }
+                    String incomeStr = incomeBuilder.toString();
+                    String taxPayable = "ERROR";
+                    String outputLine = name + "," + phone + "," + incomeStr + "," + taxPayable;
+                    writer.write(outputLine);
+                    writer.newLine();
+                    displayText.append(outputLine).append("\n");
                     continue;
                 }
                 String name = parts[0].trim();
