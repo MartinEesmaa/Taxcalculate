@@ -20,7 +20,7 @@ Feedback is available [here](FEEDBACK.md).
 | 500,52       | Comma income               | ERROR           | Success ✅ |
 | 50-50        | Fifty chance of dash       | ERROR           | Success ✅ |
 |              | Empty income               | ERROR           | Success ✅ |
-| (9000)       | Paranthesis income         | ERROR           | Success ✅ |
+| (9000)       | Parenthesis income         | ERROR           | Success ✅ |
 | 25000+50     | Range $18,201-$45,000 + add income | ERROR   | Success ✅ |
 | 250 / 5      | Division of 250 by 5       | ERROR           | Success ✅ |
 
